@@ -17,6 +17,16 @@ class Grid {
         })
         spaces.splice(idx,1)
     }
+    updateAllSpace(grid){
+        spaces=[]
+        Object.entries(grid).forEach((item,index1)=>{
+            item[1].forEach((row,index2)=>{
+                if(!row){
+                    spaces.push(`${index1+1}${index2+1}`)
+                }
+            })
+        })
+    }
 
 }
 

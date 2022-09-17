@@ -9,11 +9,13 @@ const moveRight = () => {
                 let newX=Number(item[1][index].x)
                 let newY=Number(item[1][index].y + nullCounter)
                 grid[`row${newX}`][(newY - nullCounter)-1]=null
+
                 grid.updateGrid(newX,newY)
             }
         })
     })
     ui.moveRight(grid)
+    grid.updateAllSpace(grid)
     ui.addItemOnEachMove()
 
 }
