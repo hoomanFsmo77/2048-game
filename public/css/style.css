@@ -95,7 +95,10 @@ h1{
     justify-content: center;
     border-radius: 15px;
     font-size: 4rem;
+    position: absolute;
+    transition: all 150ms linear;
 }
+
 .item-2{
     background-color: rgba(142,147,157,1) !important;
 }
