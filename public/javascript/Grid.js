@@ -32,82 +32,37 @@ class Grid {
             })
         })
     }
-    mergeItemOnRightMove(){
+    mergeHelper(which,row){
 
-        for(let index=0;index < this.row1.length;index++){
+        for(let index=0;index < this[which].length;index++){
+            if(this[which][0]!==undefined && this[which][0]!==null && this[which][1]?.value===this[which][0]?.value){
+                let newVal=this[which][1]?.value + this[which][0]?.value
+                this[which][0]=null
+                this[which][1]={x:row,y:2,value:newVal}
+                ui.moveRight(this.grid)
+            }
+
             if(index-1 > -1){
-                let lastItem=this.row1[index]
-                let currentItem=this.row1[index+1]
+                let lastItem=this[which][index]
+                let currentItem=this[which][index+1]
                 if(currentItem?.value===lastItem?.value && currentItem!==null && currentItem!==undefined){
                     let newVal=currentItem?.value+lastItem?.value
                     let newY=Math.max(currentItem?.y,lastItem?.y)
-
-                    // console.log(currentItem,lastItem)
-
-                    this.row1[lastItem.y-1]=null
-                    this.row1[newY-1]={x:1,y:newY,value:newVal}
-                    ui.moveRight(grid.grid)
+                    this[which][lastItem.y-1]=null
+                    this[which][newY-1]={x:row,y:newY,value:newVal}
+                    ui.moveRight(this.grid)
                     break
                 }
             }
+
         }
 
-        for(let index=0;index < this.row2.length;index++){
-            if(index-1 > -1){
-                let lastItem=this.row2[index]
-                let currentItem=this.row2[index+1]
-                if(currentItem?.value===lastItem?.value && currentItem!==null && currentItem!==undefined){
-                    let newVal=currentItem?.value+lastItem?.value
-                    let newY=Math.max(currentItem?.y,lastItem?.y)
-
-                    // console.log(currentItem,lastItem)
-
-                    this.row2[lastItem.y-1]=null
-                    this.row2[newY-1]={x:2,y:newY,value:newVal}
-                    ui.moveRight(grid.grid)
-
-                    break
-
-                }
-            }
-        }
-        for(let index=0;index < this.row3.length;index++){
-            if(index-1 > -1){
-                let lastItem=this.row3[index]
-                let currentItem=this.row3[index+1]
-                if(currentItem?.value===lastItem?.value && currentItem!==null && currentItem!==undefined){
-                    let newVal=currentItem?.value+lastItem?.value
-                    let newY=Math.max(currentItem?.y,lastItem?.y)
-
-                    // console.log(currentItem,lastItem)
-
-                    this.row3[lastItem.y-1]=null
-                    this.row3[newY-1]={x:3,y:newY,value:newVal}
-                    ui.moveRight(grid.grid)
-
-                    break
-
-                }
-            }
-        }
-
-        for(let index=0;index < this.row4.length;index++){
-            if(index-1 > -1){
-                let lastItem=this.row4[index]
-                let currentItem=this.row4[index+1]
-                if(currentItem?.value===lastItem?.value && currentItem!==null && currentItem!==undefined){
-                    let newVal=currentItem?.value+lastItem?.value
-                    let newY=Math.max(currentItem?.y,lastItem?.y)
-
-                    this.row4[lastItem.y-1]=null
-                    this.row4[newY-1]={x:4,y:newY,value:newVal}
-                    ui.moveRight(grid.grid)
-
-                    break
-
-                }
-            }
-        }
+    }
+    mergeItemOnRightMove() {
+        this.mergeHelper('row1',1)
+        this.mergeHelper('row2',2)
+        this.mergeHelper('row3',3)
+        this.mergeHelper('row4',4)
     }
 }
 

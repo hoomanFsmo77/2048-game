@@ -21,7 +21,6 @@ const moveRight = () => {
     ui.moveRight(grid.grid)
 
 
-
     grid.updateAllSpace(grid.grid)
 
     ui.addItemOnEachMove()
