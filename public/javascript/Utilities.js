@@ -5,11 +5,26 @@ class UI {
         this.itemContainer=document.querySelector('.item-container')
         this.newGameButton=document.querySelector('.button')
     }
+    generateRandomNumber(){
+        let nums = [1,2,3,4],
+            ranNums = [],
+            i = nums.length,
+            j = 0;
+
+        while (i--) {
+            j = Math.floor(Math.random() * (i+1));
+            ranNums.push(nums[j]);
+            nums.splice(j,1);
+
+        }
+        return ranNums
+    }
+
     addStarterItems(){
         this.itemContainer.innerHTML=''
         for(let i=0;i <2;i++){
-            let randomX=Math.ceil(Math.random()*4)
-            let randomY=Math.ceil(Math.random()*4)
+            let randomX=ui.generateRandomNumber()[0]
+            let randomY=ui.generateRandomNumber()[1]
             grid.updateGrid(randomX,randomY,2)
             grid.updateSpace(randomX,randomY)
             this.itemContainer.insertAdjacentHTML('beforeend',`<div class="item item-2 position-${randomX}-${randomY}"><div class="inner">2</div></div>`)
