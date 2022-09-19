@@ -70,6 +70,26 @@ const moveTop = () => {
 }
 
 const moveBottom = () => {
+    console.log(grid.column(0))
+
+    for(let col=0;col < 4;col++){
+        for(let index=3;index>-1;index--){
+            if(grid.column(col)[index]){
+                let val=grid.column(col)[index] && grid.column(col)[index].value
+                let nullCounter=grid.column(col).slice(index,4).filter(x=>x===null).length
+                let newX=nullCounter+ grid.column(col)[index].x
+                grid[`row${grid.column(col)[index].x}`][col]=null
+                grid.updateGrid(newX,col+1,val)
+                // console.log(grid.column(col)[index],index,nullCounter,newX)
+            }
+        }
+    }
+
+
+
+
+    ui.domUpdate(grid.grid)
+    grid.updateAllSpace()
     ui.addItemOnEachMove()
 }
 
