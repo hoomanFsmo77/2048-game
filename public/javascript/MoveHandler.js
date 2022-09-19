@@ -18,7 +18,7 @@ const moveRight = () => {
 
     grid.mergeItemOnRightMove()
 
-    ui.moveRight(grid.grid)
+    ui.domUpdate(grid.grid)
 
 
     grid.updateAllSpace(grid.grid)

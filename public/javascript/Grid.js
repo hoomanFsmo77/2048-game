@@ -13,6 +13,12 @@ class Grid {
     get grid(){
         return this
     }
+    restart(){
+        this.row1=[null,null,null,null]
+        this.row2=[null,null,null,null]
+        this.row3=[null,null,null,null]
+        this.row4=[null,null,null,null]
+    }
     updateGrid(x,y,value=2){
         this[`row${x}`][y-1]={x,y,value}
     }
@@ -39,7 +45,7 @@ class Grid {
                 let newVal=this[which][1]?.value + this[which][0]?.value
                 this[which][0]=null
                 this[which][1]={x:row,y:2,value:newVal}
-                ui.moveRight(this.grid)
+                ui.domUpdate(this.grid)
             }
 
             if(index-1 > -1){
@@ -50,7 +56,7 @@ class Grid {
                     let newY=Math.max(currentItem?.y,lastItem?.y)
                     this[which][lastItem.y-1]=null
                     this[which][newY-1]={x:row,y:newY,value:newVal}
-                    ui.moveRight(this.grid)
+                    ui.domUpdate(this.grid)
                     break
                 }
             }

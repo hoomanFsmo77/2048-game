@@ -38,7 +38,7 @@ class UI {
         grid.updateSpace(x,y)
         grid.updateGrid(x,y,2)
     }
-    moveRight(data){
+    domUpdate(data){
         this.itemContainer.innerHTML=''
         Object.entries(data).forEach(item=>{
             item[1].forEach(row=>{

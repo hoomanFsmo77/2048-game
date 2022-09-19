@@ -1,9 +1,12 @@
 import {ui} from "./Utilities.js";
 import {moveLeft,moveRight,moveBottom,moveTop} from "./MoveHandler.js";
+import {grid} from "./Grid.js";
 let isStarted=false
 
 ui.newGameButton.addEventListener('click',()=>{
     isStarted=true
+    grid.restart()
+    grid.updateAllSpace(grid.grid)
     ui.addStarterItems()
 })
 
