@@ -54,10 +54,15 @@ class Grid {
                 let currentItem=this[which][index+1]
                 if(currentItem?.value===lastItem?.value && currentItem!==null && currentItem!==undefined){
                     let newVal=currentItem?.value+lastItem?.value
+
                     let newY=Math.max(currentItem?.y,lastItem?.y)
+
                     this[which][lastItem.y-1]=null
+
                     this[which][newY-1]={x:row,y:newY,value:newVal}
+
                     ui.domUpdate(this.grid)
+
                     break
                 }
             }

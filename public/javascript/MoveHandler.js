@@ -2,23 +2,36 @@ import { grid, spaces} from "./Grid.js";
 import {ui} from "./Utilities.js";
 
 const moveRight = () => {
+    // console.log('before')
+    // console.log(grid.row1[0])
+    // console.log(grid.row1[1])
+    // console.log(grid.row1[2])
+    // console.log(grid.row1[3])
+    //
+    // console.log()
+    //
 
-    console.log('right before',grid.row2)
+    Object.entries(grid.grid).forEach(item=>{
+        for(let index=3;index > -1 ;index--){
+            if(item[1][index]){
+                let val=item[1][index] && item[1][index].value
+                let nullCounter=[...item[1]].slice(index,4).filter(x=> x===null).length
+                let newX=Number(item[1][index].x)
+                let newY=Number(item[1][index].y + nullCounter)
 
+                // console.log(item[1][index],[...item[1]].slice(index,4),item[1],newY,nullCounter,item[1][index].y)
+
+                grid.grid[`row${newX}`][item[1][index].y -1 ]=null
+
+                grid.updateGrid(newX,newY,val)
+
+                ui.domUpdate(grid.grid)
+
+            }
+        }
+    })
 
     grid.mergeItemOnRightMove()
-
-    Object.entries(grid.grid).forEach((item,index1)=>{
-        item[1].forEach((row,index2,array)=>{
-            if(row){
-                let nullCounter=[...item[1]].slice(index2).filter(x=> x===null).length
-                let newX=Number(item[1][index2].x)
-                let newY=Number(item[1][index2].y + nullCounter)
-                grid.grid[`row${newX}`][(newY - nullCounter)-1]=null
-                grid.updateGrid(newX,newY,row.value)
-            }
-        })
-    })
 
     ui.domUpdate(grid.grid)
 
@@ -27,14 +40,16 @@ const moveRight = () => {
 
     ui.addItemOnEachMove()
 
-    console.log('right after',grid.row2)
-    console.log()
+    // console.log('after')
+    // console.log(grid.row1[0])
+    // console.log(grid.row1[1])
+    // console.log(grid.row1[2])
+    // console.log(grid.row1[3])
+    // console.log()
 
 }
 
 const moveLeft = () => {
-    console.log('left before',grid.row2)
-
 
     grid.mergeItemOnLeftMove()
 
@@ -56,8 +71,7 @@ const moveLeft = () => {
 
     ui.addItemOnEachMove()
 
-    console.log('left after',grid.row2)
-    console.log()
+
 }
 
 const moveTop = () => {
