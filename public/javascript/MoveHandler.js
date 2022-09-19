@@ -57,14 +57,13 @@ const moveTop = () => {
 
                 grid.updateGrid(newX,col+1,item.value)
 
-                console.log(item,newX,nullCounter)
+                // console.log(item,newX,nullCounter)
 
             }
         })
     }
 
-
-
+    grid.mergeItemOnTopMove()
     ui.domUpdate(grid.grid)
     grid.updateAllSpace()
     ui.addItemOnEachMove()

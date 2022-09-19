@@ -118,6 +118,24 @@ class Grid {
         this.mergeHelperLeft('row4',4)
         ui.domUpdate(this.grid)
     }
+    mergeItemOnTopMove(){
+        for(let col=0;col < 4;col++){
+            this.column(col).forEach((item,index)=>{
+                if(item){
+                    let lastItem=this.column(col)[index-1]
+                    if(lastItem!==undefined && lastItem!==null && lastItem.value===item.value){
+                        let newVal=lastItem.value+item.value
+                        let newX=Math.min(lastItem.x,item.x)
+                        this[`row${newX}`][col]=null
+
+                        this[`row${newX}`][col]={x:newX,y:col+1,value:newVal}
+                    }
+
+                }
+            })
+        }
+
+    }
 
 
 }
