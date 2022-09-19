@@ -1,7 +1,6 @@
 import {ui} from "./Utilities.js";
-
 let spaces=['11','12','13','14','21','22','23','24','31','32','33','34','41','42','43','44']
-// console.log(spaces[0].split('')[0],spaces[0].split('')[1])
+
 
 class Grid {
     constructor() {
