@@ -10,8 +10,8 @@ ui.newGameButton.addEventListener('click',()=>{
     ui.addStarterItems()
 })
 
-window.addEventListener('keyup',e=>{
-    e.preventDefault()
+window.addEventListener('keydown',e=>{
+    isStarted && e.preventDefault()
     switch (e.key) {
         case 'ArrowRight':{
              isStarted && moveRight()

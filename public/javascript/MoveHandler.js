@@ -2,15 +2,6 @@ import { grid, spaces} from "./Grid.js";
 import {ui} from "./Utilities.js";
 
 const moveRight = () => {
-    // console.log('before')
-    // console.log(grid.row1[0])
-    // console.log(grid.row1[1])
-    // console.log(grid.row1[2])
-    // console.log(grid.row1[3])
-    //
-    // console.log()
-    //
-
     Object.entries(grid.grid).forEach(item=>{
         for(let index=3;index > -1 ;index--){
             if(item[1][index]){
@@ -30,29 +21,14 @@ const moveRight = () => {
             }
         }
     })
-
     grid.mergeItemOnRightMove()
-
     ui.domUpdate(grid.grid)
-
-
     grid.updateAllSpace()
-
     ui.addItemOnEachMove()
-
-    // console.log('after')
-    // console.log(grid.row1[0])
-    // console.log(grid.row1[1])
-    // console.log(grid.row1[2])
-    // console.log(grid.row1[3])
-    // console.log()
-
 }
 
 const moveLeft = () => {
-
     grid.mergeItemOnLeftMove()
-
     Object.entries(grid.grid).forEach((item,index1)=>{
         item[1].forEach((row,index2)=>{
             if(row){
@@ -64,17 +40,33 @@ const moveLeft = () => {
             }
         })
     })
-
     ui.domUpdate(grid.grid)
-
     grid.updateAllSpace()
-
     ui.addItemOnEachMove()
-
-
 }
 
 const moveTop = () => {
+
+    for(let col=0;col < 4;col++){
+        grid.column(col).forEach((item,index)=>{
+            if(item){
+                let nullCounter=[...grid.column(col)].slice(0,index).filter(x=>x===null).length
+                let newX=item.x-nullCounter
+
+                grid.grid[`row${item.x}`][col]=null
+
+                grid.updateGrid(newX,col+1,item.value)
+
+                console.log(item,newX,nullCounter)
+
+            }
+        })
+    }
+
+
+
+    ui.domUpdate(grid.grid)
+    grid.updateAllSpace()
     ui.addItemOnEachMove()
 }
 

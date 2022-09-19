@@ -9,6 +9,17 @@ class Grid {
         this.row3=[null,null,null,null]
         this.row4=[null,null,null,null]
     }
+
+
+    column(colNum){
+        // 0 => 3
+        let col=[]
+        Object.entries(this.grid).forEach((item,index)=>{
+            col.push(item[1][colNum])
+        })
+        return col
+    }
+
     get grid(){
         return this
     }
@@ -107,6 +118,8 @@ class Grid {
         this.mergeHelperLeft('row4',4)
         ui.domUpdate(this.grid)
     }
+
+
 }
 
 
