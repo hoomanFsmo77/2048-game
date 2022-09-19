@@ -10,7 +10,6 @@ class Grid {
         this.row4=[null,null,null,null]
     }
 
-
     column(colNum){
         // 0 => 3
         let col=[]
@@ -119,24 +118,56 @@ class Grid {
         ui.domUpdate(this.grid)
     }
     mergeItemOnTopMove(){
+        let BreakException={}
         for(let col=0;col < 4;col++){
-            this.column(col).forEach((item,index)=>{
-                if(item){
-                    let lastItem=this.column(col)[index-1]
-                    if(lastItem!==undefined && lastItem!==null && lastItem.value===item.value){
-                        let newVal=lastItem.value+item.value
-                        let newX=Math.min(lastItem.x,item.x)
-                        this[`row${newX}`][col]=null
-
-                        this[`row${newX}`][col]={x:newX,y:col+1,value:newVal}
+            try{
+                this.column(col).forEach((item,index)=>{
+                    if(item){
+                        let lastItem=this.column(col)[index-1]
+                        if(lastItem!==undefined && lastItem!==null && lastItem.value===item.value){
+                            let newVal=lastItem.value+item.value
+                            let newX=Math.min(lastItem.x,item.x)
+                            this[`row${item.x}`][col]=null
+                            this[`row${newX}`][col]={x:newX,y:col+1,value:newVal}
+                            ui.domUpdate(this.grid)
+                            throw  BreakException;
+                        }
                     }
+                })
 
-                }
-            })
+            }catch (e) {
+                if (e !== BreakException) throw e;
+            }
+        }
+    }
+    mergeItemOnBottomMove(){
+        let BreakException={}
+        for(let col=0;col < 4;col++){
+            try{
+                this.column(col).forEach((item,index)=>{
+                    if(item){
+                        let lastItem=this.column(col)[index-1]
+                        if(lastItem!==undefined && lastItem!==null && lastItem.value===item.value){
+                            let newVal=item.value+lastItem.value
+                            let newX=Math.max(item.x,lastItem.x)
+
+                            this[`row${lastItem.x}`][col]=null
+
+                            this[`row${newX}`][col]={x:newX,y:col+1,value:newVal}
+
+                            console.log(item,lastItem,{x:newX,y:col+1,value:newVal})
+                            ui.domUpdate(this.grid)
+                            throw BreakException
+                        }
+                    }
+                })
+            }catch (e) {
+                if (e !== BreakException) throw e;
+            }
         }
 
-    }
 
+    }
 
 }
 

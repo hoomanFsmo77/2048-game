@@ -18,7 +18,6 @@ class UI {
         }
         return ranNums
     }
-
     addStarterItems(){
         this.itemContainer.innerHTML=''
         for(let i=0;i <2;i++){

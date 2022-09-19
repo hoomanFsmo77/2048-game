@@ -70,7 +70,6 @@ const moveTop = () => {
 }
 
 const moveBottom = () => {
-    console.log(grid.column(0))
 
     for(let col=0;col < 4;col++){
         for(let index=3;index>-1;index--){
@@ -85,7 +84,7 @@ const moveBottom = () => {
         }
     }
 
-
+    grid.mergeItemOnBottomMove()
 
 
     ui.domUpdate(grid.grid)
