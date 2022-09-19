@@ -3,6 +3,10 @@ import {ui} from "./Utilities.js";
 
 const moveRight = () => {
 
+    console.log('right before',grid.row2)
+
+
+    grid.mergeItemOnRightMove()
 
     Object.entries(grid.grid).forEach((item,index1)=>{
         item[1].forEach((row,index2,array)=>{
@@ -16,23 +20,23 @@ const moveRight = () => {
         })
     })
 
-    grid.mergeItemOnRightMove()
-
     ui.domUpdate(grid.grid)
 
 
-    grid.updateAllSpace(grid.grid)
+    grid.updateAllSpace()
 
     ui.addItemOnEachMove()
 
-
-
+    console.log('right after',grid.row2)
+    console.log()
 
 }
 
 const moveLeft = () => {
+    console.log('left before',grid.row2)
 
 
+    grid.mergeItemOnLeftMove()
 
     Object.entries(grid.grid).forEach((item,index1)=>{
         item[1].forEach((row,index2)=>{
@@ -46,12 +50,14 @@ const moveLeft = () => {
         })
     })
 
-
     ui.domUpdate(grid.grid)
 
-    grid.updateAllSpace(grid.grid)
+    grid.updateAllSpace()
 
     ui.addItemOnEachMove()
+
+    console.log('left after',grid.row2)
+    console.log()
 }
 
 const moveTop = () => {

@@ -15,7 +15,6 @@ class UI {
             j = Math.floor(Math.random() * (i+1));
             ranNums.push(nums[j]);
             nums.splice(j,1);
-
         }
         return ranNums
     }
@@ -46,10 +45,7 @@ class UI {
                     ui.itemContainer.insertAdjacentHTML('beforeend',`<div class="item item-${row.value} position-${row.x}-${row.y}"><div class="inner">${row.value}</div></div>`)
                 }
             })
-
         })
-
-
     }
 }
 
