@@ -32,4 +32,6 @@ window.addEventListener('keydown',e=>{
     }
 
 })
-
+ui.gridContainer.addEventListener('touchstart',e=>{
+    console.log('start')
+})

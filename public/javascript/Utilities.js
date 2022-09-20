@@ -4,29 +4,30 @@ class UI {
     constructor() {
         this.itemContainer=document.querySelector('.item-container')
         this.newGameButton=document.querySelector('.button')
-    }
-    generateRandomNumber(){
-        let nums = [1,2,3,4],
-            ranNums = [],
-            i = nums.length,
-            j = 0;
-
-        while (i--) {
-            j = Math.floor(Math.random() * (i+1));
-            ranNums.push(nums[j]);
-            nums.splice(j,1);
-        }
-        return ranNums
+        this.gridContainer=document.querySelector('.grid-container')
     }
     addStarterItems(){
         this.itemContainer.innerHTML=''
-        for(let i=0;i <2;i++){
-            let randomX=ui.generateRandomNumber()[0]
-            let randomY=ui.generateRandomNumber()[1]
-            grid.updateGrid(randomX,randomY,2)
-            grid.updateSpace(randomX,randomY)
-            this.itemContainer.insertAdjacentHTML('beforeend',`<div class="item item-2 position-${randomX}-${randomY}"><div class="inner">2</div></div>`)
-        }
+        let nums=[1,2,3,4]
+        let randomContainer=[]
+
+        let randomOne=Math.floor(Math.random()*nums.length)
+        randomContainer.push(nums[randomOne])
+        nums.splice(randomOne,1)
+
+        let randomTwo=Math.floor(Math.random()*nums.length)
+        randomContainer.push(nums[randomTwo])
+        nums.splice(randomTwo,1)
+
+        grid.updateGrid(randomContainer[0],randomContainer[1],2)
+        grid.updateGrid(nums[0],nums[1],2)
+
+        grid.updateSpace(randomContainer[0],randomContainer[1])
+        grid.updateSpace(nums[0],nums[1])
+
+        this.itemContainer.insertAdjacentHTML('beforeend',`<div class="item item-2 position-${randomContainer[0]}-${randomContainer[1]}"><div class="inner">2</div></div>`)
+        this.itemContainer.insertAdjacentHTML('beforeend',`<div class="item item-2 position-${nums[0]}-${nums[1]}"><div class="inner">2</div></div>`)
+
     }
     addItemOnEachMove(){
         let randomNum=Math.floor(Math.random()*spaces.length)
