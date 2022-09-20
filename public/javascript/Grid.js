@@ -29,7 +29,11 @@ class Grid {
         this.row4=[null,null,null,null]
     }
     updateGrid(x,y,value=2){
-        this[`row${x}`][y-1]={x,y,value}
+        if(this[`row${x}`]){
+            this[`row${x}`][y-1]={x,y,value}
+        }else{
+            ui.winCalculator()
+        }
     }
 
     updateSpace(x,y){

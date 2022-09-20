@@ -8,6 +8,8 @@ let startX,startY
 
 ui.newGameButton.addEventListener('click',()=>{
     isStarted=true
+    ui.score.innerHTML='0'
+    ui.winCalculator(false)
     grid.restart()
     grid.updateAllSpace(grid.grid)
     ui.addStarterItems()
@@ -81,9 +83,4 @@ window.addEventListener('touchend',e=>{
         console.log(direction)
     }
 
-
-    // direction= lastY > e.changedTouches[0].clientY + 5 ?  'Down'  :  'Up'
-    // direction=lastX > e.changedTouches[0].clientX+5 ? 'right' : 'left'
-    //
-    // console.log(direction)
 })

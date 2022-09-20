@@ -5,6 +5,7 @@ class UI {
         this.itemContainer=document.querySelector('.item-container')
         this.newGameButton=document.querySelector('.button')
         this.score=document.querySelector('.score')
+        this.winStatus=document.querySelector('.win-status')
     }
     addStarterItems(){
         this.itemContainer.innerHTML=''
@@ -55,6 +56,13 @@ class UI {
         this.score.addEventListener('animationend',e=>{
             this.score.classList.remove('ani-scale')
         })
+    }
+    winCalculator(status=true){
+        if(status){
+           this.winStatus.classList.contains('show') || this.winStatus.classList.add('show')
+        }else{
+            this.winStatus.classList.contains('show') && this.winStatus.classList.remove('show')
+        }
     }
 }
 

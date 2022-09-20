@@ -214,9 +214,23 @@ h1{
 .position-4-4{
      transform: translate(403px,440px);
  }
-.grid-container,.item-container{
+.grid-container,.item-container,.win-status{
     width: 546px;
     height: 577px;
+}
+.win-status{
+    background-color:rgba(142,147,157,0.4) ;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 150ms linear ;
+    opacity: 0;
+    visibility: hidden;
+}
+.win-status.show{
+    opacity: 1;
+    visibility: visible;
 }
 
 @media (max-width: 768px) {
@@ -292,7 +306,7 @@ p{
     h6{
         font-size: 0.8rem!important;
     }
-    .grid-container,.item-container{
+    .grid-container,.item-container,.win-status{
         width: 325px;
         height: 371px;
     }

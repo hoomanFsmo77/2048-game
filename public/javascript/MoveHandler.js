@@ -10,8 +10,6 @@ const moveRight = () => {
                 let newX=Number(item[1][index].x)
                 let newY=Number(item[1][index].y + nullCounter)
 
-                // console.log(item[1][index],[...item[1]].slice(index,4),item[1],newY,nullCounter,item[1][index].y)
-
                 grid.grid[`row${newX}`][item[1][index].y -1 ]=null
 
                 grid.updateGrid(newX,newY,val)
@@ -28,7 +26,6 @@ const moveRight = () => {
 }
 
 const moveLeft = () => {
-    grid.mergeItemOnLeftMove()
     Object.entries(grid.grid).forEach((item,index1)=>{
         item[1].forEach((row,index2)=>{
             if(row){
@@ -40,13 +37,13 @@ const moveLeft = () => {
             }
         })
     })
+    grid.mergeItemOnLeftMove()
     ui.domUpdate(grid.grid)
     grid.updateAllSpace()
     ui.addItemOnEachMove()
 }
 
 const moveTop = () => {
-
     for(let col=0;col < 4;col++){
         grid.column(col).forEach((item,index)=>{
             if(item){
@@ -62,7 +59,6 @@ const moveTop = () => {
             }
         })
     }
-
     grid.mergeItemOnTopMove()
     ui.domUpdate(grid.grid)
     grid.updateAllSpace()
@@ -70,7 +66,6 @@ const moveTop = () => {
 }
 
 const moveBottom = () => {
-
     for(let col=0;col < 4;col++){
         for(let index=3;index>-1;index--){
             if(grid.column(col)[index]){
@@ -79,14 +74,10 @@ const moveBottom = () => {
                 let newX=nullCounter+ grid.column(col)[index].x
                 grid[`row${grid.column(col)[index].x}`][col]=null
                 grid.updateGrid(newX,col+1,val)
-                // console.log(grid.column(col)[index],index,nullCounter,newX)
             }
         }
     }
-
     grid.mergeItemOnBottomMove()
-
-
     ui.domUpdate(grid.grid)
     grid.updateAllSpace()
     ui.addItemOnEachMove()
