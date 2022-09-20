@@ -35,7 +35,9 @@ a {
     line-height: 2;
 
 }
-
+.color-1{
+    color: #333 !important;
+}
 a:hover {
 
 }
@@ -277,8 +279,13 @@ h1{
 
     
 }
-
+p{
+    font-size: 1.2rem;
+}
 @media (max-width: 580px) {
+    p{
+        font-size: 0.8rem!important;
+    }
     h1{
         font-size:3rem!important;
     }

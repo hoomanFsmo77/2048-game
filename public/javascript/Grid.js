@@ -73,7 +73,6 @@ class Grid {
 
                     ui.domUpdate(this.grid)
 
-                    break
                 }
             }
 
@@ -96,7 +95,7 @@ class Grid {
                     this[which][lastItem.y]=null
                     this[which][newY-1]={x:row,y:newY,value:newVal}
                     ui.domUpdate(this.grid)
-                    break
+
                 }
             }
 
@@ -118,52 +117,39 @@ class Grid {
         ui.domUpdate(this.grid)
     }
     mergeItemOnTopMove(){
-        let BreakException={}
         for(let col=0;col < 4;col++){
-            try{
-                this.column(col).forEach((item,index)=>{
-                    if(item){
-                        let lastItem=this.column(col)[index-1]
-                        if(lastItem!==undefined && lastItem!==null && lastItem.value===item.value){
-                            let newVal=lastItem.value+item.value
-                            let newX=Math.min(lastItem.x,item.x)
-                            this[`row${item.x}`][col]=null
-                            this[`row${newX}`][col]={x:newX,y:col+1,value:newVal}
-                            ui.domUpdate(this.grid)
-                            throw  BreakException;
-                        }
+            this.column(col).forEach((item,index)=>{
+                if(item){
+                    let lastItem=this.column(col)[index-1]
+                    if(lastItem!==undefined && lastItem!==null && lastItem.value===item.value){
+                        let newVal=lastItem.value+item.value
+                        let newX=Math.min(lastItem.x,item.x)
+                        this[`row${item.x}`][col]=null
+                        this[`row${newX}`][col]={x:newX,y:col+1,value:newVal}
+                        ui.domUpdate(this.grid)
                     }
-                })
-
-            }catch (e) {
-                if (e !== BreakException) throw e;
-            }
+                }
+            })
         }
     }
     mergeItemOnBottomMove(){
-        let BreakException={}
         for(let col=0;col < 4;col++){
-            try{
-                this.column(col).forEach((item,index)=>{
-                    if(item){
-                        let lastItem=this.column(col)[index-1]
-                        if(lastItem!==undefined && lastItem!==null && lastItem.value===item.value){
-                            let newVal=item.value+lastItem.value
-                            let newX=Math.max(item.x,lastItem.x)
+            this.column(col).forEach((item,index)=>{
+                if(item){
+                    let lastItem=this.column(col)[index-1]
+                    if(lastItem!==undefined && lastItem!==null && lastItem.value===item.value){
+                        let newVal=item.value+lastItem.value
+                        let newX=Math.max(item.x,lastItem.x)
 
-                            this[`row${lastItem.x}`][col]=null
+                        this[`row${lastItem.x}`][col]=null
 
-                            this[`row${newX}`][col]={x:newX,y:col+1,value:newVal}
+                        this[`row${newX}`][col]={x:newX,y:col+1,value:newVal}
 
-                            console.log(item,lastItem,{x:newX,y:col+1,value:newVal})
-                            ui.domUpdate(this.grid)
-                            throw BreakException
-                        }
+                        console.log(item,lastItem,{x:newX,y:col+1,value:newVal})
+                        ui.domUpdate(this.grid)
                     }
-                })
-            }catch (e) {
-                if (e !== BreakException) throw e;
-            }
+                }
+            })
         }
 
 
