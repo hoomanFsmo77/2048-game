@@ -9,7 +9,12 @@ class Grid {
         this.row3=[null,null,null,null]
         this.row4=[null,null,null,null]
     }
-
+    restoreGrid(newData){
+        this.row1=newData.row1
+        this.row2=newData.row2
+        this.row3=newData.row3
+        this.row4=newData.row4
+    }
     column(colNum){
         // 0 => 3
         let col=[]
@@ -18,7 +23,6 @@ class Grid {
         })
         return col
     }
-
     get grid(){
         return this
     }
@@ -42,9 +46,9 @@ class Grid {
         })
         spaces.splice(idx,1)
     }
-    updateAllSpace(){
-        spaces=[]
-        Object.entries(this.grid).forEach((item,index1)=>{
+    updateAllSpace(data=this.grid){
+        spaces=[];
+        Object.entries(data).forEach((item,index1)=>{
             item[1].forEach((row,index2)=>{
                 if(!row){
                     spaces.push(`${index1+1}${index2+1}`)

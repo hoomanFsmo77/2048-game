@@ -156,6 +156,11 @@ h1{
     color: white!important;
     font-size: 3rem!important;
 }
+.item-2048{
+    background-color:rgba(144,157,46,0.84) !important;
+    color: black!important;
+    font-size: 3rem!important;
+}
 
 .position-1-1{
     transform: translate(19px,18px);
