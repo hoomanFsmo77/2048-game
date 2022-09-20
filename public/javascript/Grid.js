@@ -56,6 +56,7 @@ class Grid {
                 let newVal=this[which][1]?.value + this[which][0]?.value
                 this[which][0]=null
                 this[which][1]={x:row,y:2,value:newVal}
+                ui.scoreCalculator(newVal)
                 ui.domUpdate(this.grid)
             }
 
@@ -71,6 +72,7 @@ class Grid {
 
                     this[which][newY-1]={x:row,y:newY,value:newVal}
 
+                    ui.scoreCalculator(newVal)
                     ui.domUpdate(this.grid)
 
                 }
@@ -84,6 +86,7 @@ class Grid {
                 let newVal=this[which][1]?.value + this[which][0]?.value
                 this[which][1]=null
                 this[which][0]={x:row,y:1,value:newVal}
+                ui.scoreCalculator(newVal)
                 ui.domUpdate(this.grid)
             }
             if(index-1 > -1){
@@ -94,6 +97,7 @@ class Grid {
                     let newY=Math.min(currentItem?.y,lastItem?.y)
                     this[which][lastItem.y]=null
                     this[which][newY-1]={x:row,y:newY,value:newVal}
+                    ui.scoreCalculator(newVal)
                     ui.domUpdate(this.grid)
 
                 }
@@ -126,6 +130,7 @@ class Grid {
                         let newX=Math.min(lastItem.x,item.x)
                         this[`row${item.x}`][col]=null
                         this[`row${newX}`][col]={x:newX,y:col+1,value:newVal}
+                        ui.scoreCalculator(newVal)
                         ui.domUpdate(this.grid)
                     }
                 }
@@ -145,7 +150,7 @@ class Grid {
 
                         this[`row${newX}`][col]={x:newX,y:col+1,value:newVal}
 
-                        console.log(item,lastItem,{x:newX,y:col+1,value:newVal})
+                        ui.scoreCalculator(newVal)
                         ui.domUpdate(this.grid)
                     }
                 }

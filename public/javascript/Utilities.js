@@ -4,7 +4,7 @@ class UI {
     constructor() {
         this.itemContainer=document.querySelector('.item-container')
         this.newGameButton=document.querySelector('.button')
-        this.gridContainer=document.querySelector('.grid-container')
+        this.score=document.querySelector('.score')
     }
     addStarterItems(){
         this.itemContainer.innerHTML=''
@@ -45,6 +45,15 @@ class UI {
                     ui.itemContainer.insertAdjacentHTML('beforeend',`<div class="item item-${row.value} position-${row.x}-${row.y}"><div class="inner ani-scale">${row.value}</div></div>`)
                 }
             })
+        })
+    }
+
+    scoreCalculator(newValue){
+        let lastValue=Number(this.score.innerHTML)
+        this.score.innerHTML=lastValue+newValue
+        this.score.classList.add('ani-scale')
+        this.score.addEventListener('animationend',e=>{
+            this.score.classList.remove('ani-scale')
         })
     }
 }
