@@ -3,7 +3,6 @@ import {moveLeft,moveRight,moveBottom,moveTop} from "./MoveHandler.js";
 import {grid} from "./Grid.js";
 let isStarted=false
 let startX,startY
-let direction
 
 
 
@@ -36,7 +35,6 @@ window.addEventListener('keydown',e=>{
     }
 
 })
-
 window.addEventListener('touchstart',e=>{
     document.body.style.touchAction='none'
     isStarted && e.preventDefault()

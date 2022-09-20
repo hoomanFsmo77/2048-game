@@ -25,15 +25,15 @@ class UI {
         grid.updateSpace(randomContainer[0],randomContainer[1])
         grid.updateSpace(nums[0],nums[1])
 
-        this.itemContainer.insertAdjacentHTML('beforeend',`<div class="item item-2 position-${randomContainer[0]}-${randomContainer[1]}"><div class="inner">2</div></div>`)
-        this.itemContainer.insertAdjacentHTML('beforeend',`<div class="item item-2 position-${nums[0]}-${nums[1]}"><div class="inner">2</div></div>`)
+        this.itemContainer.insertAdjacentHTML('beforeend',`<div class="item item-2 position-${randomContainer[0]}-${randomContainer[1]}"><div class="inner ani-scale">2</div></div>`)
+        this.itemContainer.insertAdjacentHTML('beforeend',`<div class="item item-2 position-${nums[0]}-${nums[1]}"><div class="inner ani-scale">2</div></div>`)
 
     }
     addItemOnEachMove(){
         let randomNum=Math.floor(Math.random()*spaces.length)
         let x=Number(spaces[randomNum]?.split('')[0])
         let y=Number(spaces[randomNum]?.split('')[1])
-        spaces.length>0 && this.itemContainer.insertAdjacentHTML('beforeend',`<div class="item item-2 position-${x}-${y}"><div class="inner">2</div></div>`)
+        spaces.length>0 && this.itemContainer.insertAdjacentHTML('beforeend',`<div class="item item-2 position-${x}-${y}"><div class="inner ani-scale">2</div></div>`)
         grid.updateSpace(x,y)
         grid.updateGrid(x,y,2)
     }
@@ -42,7 +42,7 @@ class UI {
         Object.entries(data).forEach(item=>{
             item[1].forEach(row=>{
                 if(row!==null){
-                    ui.itemContainer.insertAdjacentHTML('beforeend',`<div class="item item-${row.value} position-${row.x}-${row.y}"><div class="inner">${row.value}</div></div>`)
+                    ui.itemContainer.insertAdjacentHTML('beforeend',`<div class="item item-${row.value} position-${row.x}-${row.y}"><div class="inner ani-scale">${row.value}</div></div>`)
                 }
             })
         })

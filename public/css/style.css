@@ -95,7 +95,24 @@ h1{
     border-radius: 15px;
     font-size: 4rem;
     position: absolute;
-    transition: all 150ms linear;
+}
+.ani-scale{
+    animation:appear 150ms ease  ;
+}
+
+@keyframes appear {
+    0%{
+        opacity: 0;
+        transform: scale(0);
+    }
+    50%{
+        opacity: 0.5;
+        transform: scale(1.2);
+    }
+    100%{
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 .item-2{
