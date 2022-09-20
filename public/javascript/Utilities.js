@@ -1,4 +1,5 @@
 import {grid,spaces} from "./Grid.js";
+import  {storage} from "./storage_manager.js";
 
 class UI {
     constructor() {
@@ -6,6 +7,9 @@ class UI {
         this.newGameButton=document.querySelector('.button')
         this.score=document.querySelector('.score')
         this.winStatus=document.querySelector('.win-status')
+        this.best=document.querySelector('.best')
+        this.totalScore=0
+        this.totalBest=0
     }
     addStarterItems(){
         this.itemContainer.innerHTML=''
@@ -51,10 +55,33 @@ class UI {
 
     scoreCalculator(newValue){
         let lastValue=Number(this.score.innerHTML)
+        this.totalScore=lastValue+newValue
+        this.totalBest=lastValue+newValue
+
         this.score.innerHTML=lastValue+newValue
+
+
+        if(!storage.isExist){
+            this.best.innerHTML=lastValue+newValue
+        }else{
+            if(this.totalScore > Number(ui.best.innerHTML)){
+                this.best.innerHTML=lastValue+newValue
+                console.log('add')
+            }
+        }
+
+        // storage.store(grid,this.totalScore,lastValue+newValue)
+
+        console.log(lastValue+newValue,storage.getBestScore())
+
+
+        this.best.classList.add('ani-scale')
         this.score.classList.add('ani-scale')
         this.score.addEventListener('animationend',e=>{
             this.score.classList.remove('ani-scale')
+        })
+        this.best.addEventListener('animationend',e=>{
+            this.best.classList.remove('ani-scale')
         })
     }
     winCalculator(status=true){

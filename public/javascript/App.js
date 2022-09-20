@@ -1,6 +1,7 @@
 import {ui} from "./Utilities.js";
 import {moveLeft,moveRight,moveBottom,moveTop} from "./MoveHandler.js";
-import {grid} from "./Grid.js";
+import {grid, spaces} from "./Grid.js";
+import {storage} from "./storage_manager.js";
 let isStarted=false
 let startX,startY
 
@@ -9,10 +10,17 @@ let startX,startY
 ui.newGameButton.addEventListener('click',()=>{
     isStarted=true
     ui.score.innerHTML='0'
+    ui.totalScore=0
+    ui.totalBest=storage.getBestScore()
     ui.winCalculator(false)
     grid.restart()
     grid.updateAllSpace(grid.grid)
     ui.addStarterItems()
+    storage.store(grid.grid,ui.totalScore,storage.getBestScore())
+})
+window.addEventListener('load',()=>{
+    storage.restore()
+    storage.isExist ? isStarted=true : isStarted=false
 })
 
 window.addEventListener('keydown',e=>{

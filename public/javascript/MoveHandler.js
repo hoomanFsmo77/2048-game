@@ -1,5 +1,6 @@
 import { grid, spaces} from "./Grid.js";
 import {ui} from "./Utilities.js";
+import {storage} from "./storage_manager.js";
 
 const moveRight = () => {
     Object.entries(grid.grid).forEach(item=>{
@@ -23,6 +24,7 @@ const moveRight = () => {
     ui.domUpdate(grid.grid)
     grid.updateAllSpace()
     ui.addItemOnEachMove()
+    storage.store(grid.grid,ui.totalScore,ui.totalBest)
 }
 
 const moveLeft = () => {
@@ -41,6 +43,7 @@ const moveLeft = () => {
     ui.domUpdate(grid.grid)
     grid.updateAllSpace()
     ui.addItemOnEachMove()
+    storage.store(grid.grid,ui.totalScore,ui.totalBest)
 }
 
 const moveTop = () => {
@@ -63,6 +66,7 @@ const moveTop = () => {
     ui.domUpdate(grid.grid)
     grid.updateAllSpace()
     ui.addItemOnEachMove()
+    storage.store(grid.grid,ui.totalScore,ui.totalBest)
 }
 
 const moveBottom = () => {
@@ -81,6 +85,7 @@ const moveBottom = () => {
     ui.domUpdate(grid.grid)
     grid.updateAllSpace()
     ui.addItemOnEachMove()
+    storage.store(grid.grid,ui.totalScore,ui.totalBest)
 }
 
 export {moveRight,moveTop,moveBottom,moveLeft}
