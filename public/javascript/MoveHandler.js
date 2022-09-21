@@ -57,7 +57,6 @@ const moveTop = () => {
 
                 grid.updateGrid(newX,col+1,item.value)
 
-                // console.log(item,newX,nullCounter)
 
             }
         })

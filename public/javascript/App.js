@@ -45,17 +45,17 @@ window.addEventListener('keydown',e=>{
     }
 
 })
-window.addEventListener('touchstart',e=>{
+ui.itemContainer.addEventListener('touchstart',e=>{
     document.body.style.touchAction='none'
     isStarted && e.preventDefault()
     startY=e.changedTouches[0].clientY
     startX=e.changedTouches[0].clientX
 })
-window.addEventListener('touchmove',e=>{
+ui.itemContainer.addEventListener('touchmove',e=>{
     document.body.style.touchAction='none'
     isStarted && e.preventDefault()
 })
-window.addEventListener('touchend',e=>{
+ui.itemContainer.addEventListener('touchend',e=>{
     document.body.style.touchAction='none'
     isStarted && e.preventDefault()
 
@@ -88,7 +88,6 @@ window.addEventListener('touchend',e=>{
             }
             break
         }
-        console.log(direction)
     }
 
 })
