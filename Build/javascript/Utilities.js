@@ -66,13 +66,11 @@ class UI {
         }else{
             if(this.totalScore > Number(ui.best.innerHTML)){
                 this.best.innerHTML=lastValue+newValue
-                console.log('add')
             }
         }
 
-        // storage.store(grid,this.totalScore,lastValue+newValue)
 
-        console.log(lastValue+newValue,storage.getBestScore())
+
 
 
         this.best.classList.add('ani-scale')

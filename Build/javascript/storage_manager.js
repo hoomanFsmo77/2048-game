@@ -32,7 +32,6 @@ class Storage {
             grid.restoreGrid(storedData.grid);
             ui.domUpdate(storedData.grid);
             ui.score.innerHTML=storedData.score;
-            console.log(storedData.best)
             ui.best.innerHTML=storedData.best
             grid.updateAllSpace(storedData.grid);
             ui.totalScore=storedData.score

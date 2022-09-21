@@ -84,7 +84,7 @@ h1{
     font-size: 4rem;
 }
 .grid-row{
-    padding: 0.6rem;
+    padding: 0.7rem;
     display: flex;
     gap:0.3rem
 }
@@ -302,6 +302,9 @@ p{
     font-size: 1.2rem;
 }
 @media (max-width: 580px) {
+    .grid-row{
+        padding: 0.6rem!important;
+    }
     .grid-column{
         margin: auto 0.2rem!important;
     }
